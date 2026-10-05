@@ -1,0 +1,38 @@
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+  <h2 style="font-size:1.5rem; font-weight:700;">Danh sách sách</h2>
+  <a href="/books/new" class="btn btn-primary">+ Thêm sách mới</a>
+</div>
+
+{{#if books.length}}
+<div style="overflow-x:auto;">
+  <table style="width:100%; border-collapse:collapse; background:#1e293b; border-radius:12px; overflow:hidden;">
+    <thead>
+      <tr style="background:#0f172a; color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">
+        <th style="padding:0.85rem 1rem; text-align:left;">Mã sách</th>
+        <th style="padding:0.85rem 1rem; text-align:left;">Tên sách</th>
+        <th style="padding:0.85rem 1rem; text-align:left;">Tác giả</th>
+        <th style="padding:0.85rem 1rem; text-align:right;">Giá gốc (VND)</th>
+        <th style="padding:0.85rem 1rem; text-align:center;">VAT (%)</th>
+        <th style="padding:0.85rem 1rem; text-align:right;">Giá sau thuế (VND)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each books}}
+      <tr style="border-top:1px solid #334155; transition:background 0.15s;" onmouseover="this.style.background='#263348'" onmouseout="this.style.background=''">
+        <td style="padding:0.85rem 1rem; font-family:monospace; color:#38bdf8;">{{this.productCode}}</td>
+        <td style="padding:0.85rem 1rem; font-weight:600;">{{this.title}}</td>
+        <td style="padding:0.85rem 1rem; color:#94a3b8;">{{this.author}}</td>
+        <td style="padding:0.85rem 1rem; text-align:right;">{{this.price}}</td>
+        <td style="padding:0.85rem 1rem; text-align:center; color:#818cf8;">{{this.vatRate}}%</td>
+        <td style="padding:0.85rem 1rem; text-align:right; color:#4ade80; font-weight:600;">{{this.priceAfterTax}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{else}}
+<div style="text-align:center; padding:4rem 1rem; color:#475569;">
+  <div style="font-size:3rem; margin-bottom:1rem;">📭</div>
+  <p style="font-size:1.1rem;">Chưa có sách nào. <a href="/books/new" style="color:#38bdf8; text-decoration:none;">Thêm ngay!</a></p>
+</div>
+{{/if}}
